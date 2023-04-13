@@ -1,0 +1,224 @@
+@use '../scss' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: $pale-blue;
+  font-family: $redhat;
+  font-size: 16px;
+}
+
+.background {
+  height: 100vh;
+  position: relative;
+  @include colCenter;
+
+  &-desktop {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    @include onDesktop {
+      visibility: visible;
+    }
+  }
+
+  &-mobile {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    @include onMobile {
+      visibility: visible;
+    }
+  }
+
+  .component {
+    @include onDesktop {
+      width: 450px;
+      height: 700px;
+    }
+
+    @include onMobile {
+      width: 330px;
+      height: 570px;
+    }
+
+    background-color: whitesmoke;
+    border-radius: 1.5rem;
+
+    &__header {
+      @include onDesktop {
+        height: 220px;
+      }
+
+      @include onMobile {
+        height: 160px;
+      }
+
+      &-img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1.5rem 1.5rem 0 0;
+      }
+    }
+
+    &__body {
+      @include colCenter;
+      width: 100%;
+      padding: 3rem 3rem 1rem 3rem;
+
+      @include onMobile {
+        padding: 2rem 1.5rem;
+      }
+
+      text-align: center;
+
+      &-title {
+        font-size: 2rem;
+
+        @include onMobile {
+          font-size: 1.5rem;
+        }
+
+        font-weight: $bbold;
+        color: $dark-blue;
+        margin-bottom: 1.1rem;
+      }
+
+      &-text {
+        color: $desaturated-blue;
+        font-weight: $med;
+        font-size: 1rem;
+
+        @include onMobile {
+          padding: 0 1rem;
+          font-size: 0.95rem;
+        }
+
+        line-height: 1.6rem;
+        margin-bottom: 1.5rem;
+      }
+
+      &-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: $very-pale-blue;
+        border-radius: 0.5rem;
+        padding: 1.5rem 1rem;
+
+        @include onMobile {
+          padding: 1.2rem 1rem;
+          margin-bottom: -1.2rem;
+        }
+
+        &__textbox {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          @include onMobile {
+            margin-left: 1rem;
+          }
+
+          &-plan {
+            color: $dark-blue;
+            font-size: 1.1rem;
+            font-weight: $bbold;
+            margin-bottom: 0.2rem;
+
+            @include onMobile {
+              font-size: 0.9rem;
+            }
+          }
+
+          &-price {
+            color: $desaturated-blue;
+
+            @include onMobile {
+              font-size: 0.9rem;
+            }
+          }
+
+        }
+
+        &__link {
+          font-weight: $bbold;
+          color: $bright-blue;
+          text-decoration: underline;
+
+          @include onMobile {
+            font-size: 0.8rem;
+          }
+
+          &:hover {
+            text-decoration: none;
+            color: lighten($bright-blue, $amount: 15);
+          }
+        }
+      }
+    }
+
+    &__footer {
+      @include colCenter;
+      height: 23%;
+      padding: 3rem;
+
+      @include onMobile {
+        padding: 1.5rem;
+      }
+
+      a {
+        width: 100%;
+      }
+
+      &-pay {
+        width: 100%;
+        background-color: $bright-blue;
+        padding: 0.8rem;
+        border-radius: 0.8rem;
+        color: $very-pale-blue;
+        text-align: center;
+        font-size: 0.95rem;
+        font-weight: $bold;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 1rem 1rem 0rem rgba($bright-blue, 0.2);
+
+
+        &:hover {
+          background-color: lighten($bright-blue, $amount: 15);
+        }
+      }
+
+      &-cancel {
+        width: 100%;
+        padding: 1rem;
+        color: $desaturated-blue;
+        font-size: 0.95rem;
+        text-align: center;
+        font-weight: $bbold;
+
+        &:hover {
+          color: $dark-blue;
+        }
+      }
+    }
+
+  }
+}
